@@ -1,0 +1,24 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="py-row"  attributes="rowContent">
+  <div class="row">
+    <template>
+      <template id="rowContainer" repeat="{{field in rowContentAsArray}}">
+        <py-cell cellData="{{rowContent[field]}}"></py-cell>
+      </template>
+    </template>
+  </div>
+  <script>
+    (function () {
+      'use strict';
+      Polymer({
+        created: function() {
+          this.rowContent = {}; // Initialize and hint type to an object.
+        },
+        ready: function() {
+          this.rowContentAsArray = Object.getOwnPropertyNames(this.rowContent);
+        }
+      });
+    })();
+  </script>
+</polymer-element>
