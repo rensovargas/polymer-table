@@ -1,13 +1,14 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
 <polymer-element name="py-row"  attributes="rowContent">
-  <div class="row">
     <template>
-      <template id="rowContainer" repeat="{{field in rowContentAsArray}}">
-        <py-cell cellData="{{rowContent[field]}}"></py-cell>
-      </template>
+      <link href="py-row.css" rel="stylesheet" type="text/css">
+      <div class="row">
+        <template id="rowContainer" repeat="{{field in rowContentAsArray}}">
+          <py-cell cellData="{{rowContent[field]}}"></py-cell>
+        </template>
+      </div>
     </template>
-  </div>
   <script>
     (function () {
       'use strict';
