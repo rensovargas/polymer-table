@@ -1,6 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
-<polymer-element name="py-table"  attributes="tableContent">
+<polymer-element name="py-table"  attributes="data">
   <template>
     <link href="py-table.css" rel="stylesheet" type="text/css">
     <div class="table">
@@ -11,8 +11,12 @@
         </template>
       </div>
       <h2>rows</h2>
-      <template repeat="{{row in tableContent}}">
-        <py-row rowContent="{{row}}"></py-row>
+      <template repeat="{{ row in data }}">
+        <div class="row">
+          <template repeat="{{ key in row | keys }}">
+            <py-cell data="{{row[key]}}" row="{{ row | index(data)}}" col="{{columns[key]}}"></py-cell>
+          </template>
+        </div>
       </template>
     </div>
   </template>
