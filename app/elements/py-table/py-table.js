@@ -28,16 +28,7 @@
     index: function(element, array){
       return array.indexOf(element) + 1;
     },
-    
-    foo: function(array){
-      return array.length;
-    },
-    
-    debug: function(object){
-      console.log("debug", object);
-      return headers;
-    },
-    
+        
     ajaxResponse: function(event, data) {
       this.tableContent = data.response;
       this.headers = this.getHeaders();
