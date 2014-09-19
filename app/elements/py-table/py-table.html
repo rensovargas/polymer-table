@@ -1,8 +1,10 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 
-<polymer-element name="py-table"  attributes="data">
+<polymer-element name="py-table"  attributes="data url">
   <template>
     <link href="py-table.css" rel="stylesheet" type="text/css">
+    <core-ajax auto url="{{url}}" handleAs="json" on-core-response="{{ajaxResponse}}"></core-ajax>
     <div class="table">
       <div class="headers">
         <h2>headers</h2>

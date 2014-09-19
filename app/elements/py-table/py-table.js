@@ -1,31 +1,13 @@
 (function () {
   'use strict';
   Polymer({
-    data : [
-      {
-        id: 1,
-        title: 'this is the title',
-        subject: 'this is a subject',
-        description: 'this is a description'
-      },
-      {
-        id: 2,
-        title: 'this is the title 2',
-        subject: 'this is a subject 2',
-        description: 'this is a description 2'
-      },
-      {
-        id: 3,
-        title: 'this is the title 3',
-        subject: 'this is a subject 3',
-        description: 'this is a description 3'
-      }],
+    
     created: function() {
-      this.columns = this.getColumns();
+      this.tableContent = []; // Initialize and hint type to an object.
       
     },
 
-    getColumns : function() {
+    getHeaders: function() {
       var headers = [];
       var columns = {};
       if(this.data.length > 0) {
@@ -53,6 +35,12 @@
     
     debug: function(object){
       console.log("debug", object);
+      return headers;
+    },
+    
+    ajaxResponse: function(event, data) {
+      this.tableContent = data.response;
+      this.headers = this.getHeaders();
     }
   });
 })();
