@@ -1,9 +1,10 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
-<polymer-element name="py-cell"  attributes="cellData">
+<polymer-element name="py-cell"  attributes="data row col">
   <template>
     <link href="py-cell.css" rel="stylesheet" type="text/css">
-    <div>{{cellData}}</div>
+      <span>row:{{row}} - col: {{getAlphaIndex(col)}}</span>
+      <div>{{data}}</div>
   </template>
   <script src="./py-cell.js"></script>
 </polymer-element>
