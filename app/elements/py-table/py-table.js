@@ -3,6 +3,10 @@
   Polymer({
     created: function() {
       this.tableContent = []; // Initialize and hint type to an object.
+      this.configuration = {
+        rootNode: 'response',
+        columNames: ['Custom Id Title', 'Custom Title', 'Custom Subject', 'Custom Description']
+      };
     },
 
     getHeaders: function() {
@@ -14,8 +18,12 @@
     },
     
     ajaxResponse: function(event, data) {
-      this.tableContent = data.response;
-      this.headers = this.getHeaders();
+      this.tableContent = data[this.configuration.rootNode];
+      if(this.configuration.columNames) {
+        this.headers = this.configuration.columNames;
+      } else {
+        this.headers = this.getHeaders();
+      }
     }
   });
 })();
