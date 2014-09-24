@@ -30,8 +30,8 @@
     },
         
     ajaxResponse: function(event, data) {
-      this.tableContent = data.response;
-      this.headers = this.getHeaders();
+      this.data = data.response;
+      //this.headers = this.getHeaders();
     }
   });
 })();
