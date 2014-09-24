@@ -277,7 +277,27 @@ module.exports = function (grunt) {
           threshold: 80
         }
       }
+    },
+    express: {
+      services:{
+        options:{
+          script: 'services/express.js'
+        }
+      }
+    },
+    
+    concurrent:{
+      services: {
+        tasks: [
+          'express:services',
+          'watch'
+        ],
+        options: {
+          logConcurrentOutput: true
+        }
+      }
     }
+    
   });
 
   grunt.registerTask('server', function (target) {
@@ -297,7 +317,7 @@ module.exports = function (grunt) {
       'autoprefixer:server',
       'connect:livereload',
       'open',
-      'watch'
+      'concurrent:services'
     ]);
   });
 
@@ -318,7 +338,7 @@ module.exports = function (grunt) {
     'uglify',
     'vulcanize',
     'usemin',
-    'minifyHtml'
+    'minifyHtml',
   ]);
 
   grunt.registerTask('default', [
